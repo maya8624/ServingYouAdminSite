@@ -1,0 +1,69 @@
+﻿@model ServingYouAdmin.ViewModels.BookingEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+<h4>Edit Booking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-7">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateBooked" class="control-label"></label>
+                <input asp-for="DateBooked" type="datetime" class="form-control" />
+                <span asp-validation-for="DateBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeBooked" class="control-label"></label>
+                <input asp-for="TimeBooked" class="form-control" />
+                <span asp-validation-for="TimeBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<BookingStatus>()" class="form-control">
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberinParty" class="control-label"></label>
+                <input asp-for="NumberinParty" class="form-control" min="1" max="20" />
+                <span asp-validation-for="NumberinParty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Method" class="control-label"></label>
+                <select asp-for="Method" asp-items="Html.GetEnumSelectList<BookingMethods>()" class="custom-select mr-sm-0"></select>
+                <span asp-validation-for="Method" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TableNo" class="control-label"></label>
+                <select asp-for="TableNo" asp-items="Html.GetEnumSelectList<Table>()" class="form-control"></select>
+                <span asp-validation-for="TableNo" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center mt-4">
+                <input type="submit" value="Save" class="btn btn-primary mr-3" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

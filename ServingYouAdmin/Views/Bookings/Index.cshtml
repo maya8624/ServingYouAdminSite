@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Booking>
+
+@{
+    ViewData["Title"] = "Booking List   ";
+}
+
+<div class="row d-flex justify-content-between">
+    <div><h3 class="ml-3">Booking List</h3></div>
+    <div class="mt-3 mr-3">
+        <a asp-action="Create" class="btn btn-primary btn-sm">Create New</a>
+    </div>
+</div>
+
+@await Component.InvokeAsync("FilterOptions")
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.DateBooked)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.TimeBooked)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Method)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </a>
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.Mobile)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.DateBooked)
+                </td>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.TimeBooked)
+                </td>
+                <td scope="row">
+                    @Enum.GetName(typeof(BookingStatus), item.Status)
+                </td>
+                <td scope="row">
+                    @Enum.GetName(typeof(BookingMethods), item.Method)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

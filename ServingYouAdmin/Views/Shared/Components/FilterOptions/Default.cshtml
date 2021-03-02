@@ -1,0 +1,12 @@
+﻿
+@model FilterByDates
+
+<form asp-action="Index" method="get" class="form-inline">
+    <div class="form-group mb-2">
+        <label for="startDate" class="m-1">Start:</label>
+        <input type="date" asp-for="@Model.StartDate" id="start" class="form-control" />
+        <label for="endDate" class="m-2">End:</label>
+        <input type="date" asp-for="@Model.EndDate" id="endDate" class="form-control" />
+        <input type="submit" max="20" value="Search" class="btn btn-primary btn-sm m-3" />
+    </div>
+</form> 

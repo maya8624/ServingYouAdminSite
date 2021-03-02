@@ -1,0 +1,104 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mb-5">
+    <h5>
+        @if (!string.IsNullOrEmpty(Model.EmployeeId)) 
+        { 
+            @Model.EmployeeId        
+        }
+        (@DateTime.Now.ToString("dd/MM/yyyy"))
+    </h5>
+</div>
+
+<div class="wrapper">
+    <div>
+        <h5>New Orders</h5>
+        @if (Model.Orders.Count() == 0)
+        {
+            <div>No New Orders.</div>
+        }
+        else
+        {
+            <table class="table">             
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderTotal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemberId)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+    <div>
+        <h5>New Menus</h5>
+        @if (Model.Menus.Count() == 0)
+        {
+            <div>no new menus today...</div>
+        }
+        else
+        {
+            <table class="table">               
+                @foreach (var item in Model.Menus)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>                       
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+    <div>
+        <h5>New Members</h5>
+        @if (Model.Members.Count() == 0)
+        {
+            <div>no members today...</div>
+        }
+        else
+        {
+            <table class="table">            
+                @foreach (var item in Model.Members)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+    <div>
+        <h5>Total Sales</h5>
+        ...coming soon
+    </div>
+</div>
+

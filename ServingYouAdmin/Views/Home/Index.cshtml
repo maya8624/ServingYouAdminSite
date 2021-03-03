@@ -28,16 +28,13 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Id)
+                            Order Id: @Html.DisplayFor(modelItem => item.Id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.OrderTotal)
-                        </td>
+                            Total: @Html.DisplayFor(modelItem => item.OrderTotal)
+                        </td>                       
                         <td>
-                            @Html.DisplayFor(modelItem => item.OrderStatus)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MemberId)
+                            Member Id: @Html.DisplayFor(modelItem => item.MemberId)
                         </td>
                     </tr>
                 }
@@ -57,13 +54,13 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            Name: @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Category)
+                            Category: @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Price)
+                            Price: @Html.DisplayFor(modelItem => item.Price)
                         </td>                       
                     </tr>
                 }
